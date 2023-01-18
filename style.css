@@ -12,15 +12,34 @@ body {
 
 .grid-container {
     border: black 1px solid;
+    width: 800px;
+    height: 800px;
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
 }
 
 .grid-row {
+    flex-basis: 100%;
     display: flex;
     flex-direction: row;
+    align-content: stretch;
+}
+
+.rows {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: ;
 }
 
 .boxes {
     margin: 0;
-    height: 30px;
-    width: 30px;
+    padding: 0;
+    /*border: black 0.5px solid;*/
+    flex:1 1 100%;
+}
+
+.boxes:hover {
+    background-color: aqua;
 }

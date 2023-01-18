@@ -19,7 +19,7 @@ function createGrid(){
             const divColumn = document.createElement('div');
             divColumn.setAttribute('id', `column${i}`);
             divColumn.classList.add('boxes');
-            divColumn.textContent = i;
+            //divColumn.textContent = i;
             divRow.appendChild(divColumn);
         }   
     }
@@ -38,7 +38,6 @@ createGrid()
 //Changes grid when user selects new value.
 gridSizeInput.addEventListener('change', (event) => {
     gridSize = gridSizeInput.value;
-    console.log(gridSizeInput.value);
     clearGrid();
     createGrid();
 })    
