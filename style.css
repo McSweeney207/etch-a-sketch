@@ -19,14 +19,14 @@ body {
     align-content: stretch;
 }
 
-.grid-row {
+.grid-column {
     flex-basis: 100%;
     display: flex;
     flex-direction: row;
     align-content: stretch;
 }
 
-.rows {
+.columns {
     flex: auto;
     display: flex;
     flex-direction: column;

@@ -1,6 +1,5 @@
 //HTML Query Selectors.
 const gridContainer = document.querySelector(".grid-container");
-const gridRow = document.querySelector(".grid-row");
 const gridColumn = document.querySelector(".grid-column");
 const gridSizeInput = document.getElementById("grid-size");
 
@@ -9,26 +8,25 @@ let gridSize = gridSizeInput.value;
 
 //Creates grid using the users grid size selection.
 function createGrid(){
-    for (let x = 1; x <= gridSize; x++){
-        const divRow = document.createElement('div');
-        divRow.setAttribute('id', `row${x}`);
-        divRow.classList.add('rows');
-        gridRow.appendChild(divRow);
+    for (let x = 1; x <= gridSize; x++){ //Creates a new column.
+        const divColumn = document.createElement('div');
+        divColumn.setAttribute('id', `column${x}`);
+        divColumn.classList.add('columns');
+        gridColumn.appendChild(divColumn);
 
-        for (let i = 1; i <= gridSize; i++){
-            const divColumn = document.createElement('div');
-            divColumn.setAttribute('id', `column${i}`);
-            divColumn.classList.add('boxes');
-            //divColumn.textContent = i;
-            divRow.appendChild(divColumn);
+        for (let i = 1; i <= gridSize; i++){ //Fills column with divs.
+            const divColumnBox= document.createElement('div');
+            divColumnBox.setAttribute('id', `box${i}`);
+            divColumnBox.classList.add('boxes');
+            divColumn.appendChild(divColumnBox);
         }   
     }
 }
 
 //Clears Grid.
 function clearGrid(){
-    while (gridRow.firstChild){
-        gridRow.removeChild(gridRow.lastChild);
+    while (gridColumn.firstChild){
+        gridColumn.removeChild(gridColumn.lastChild);
     }
 }
 
