@@ -36,10 +36,13 @@ body {
 .boxes {
     margin: 0;
     padding: 0;
-    /*border: black 0.5px solid;*/
     flex:1 1 100%;
 }
 
 .boxes:hover {
     background-color: aqua;
+}
+
+.boxes-selected {
+    background-color: orangered;
 }
