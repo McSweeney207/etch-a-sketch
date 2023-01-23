@@ -31,19 +31,35 @@ function clearGrid(){
     };
 };
 
-//Selects all the boxes each time they are changed and adds event listener.
+//Selects all the boxes each time they are changed and adds event listeners.
 function addBoxesListener(){
 
     let boxes = document.querySelectorAll(".boxes"); //selects boxes.
 
-    //Set what to do when selected.
+    //Sets event listners for when initially clicked.
     const buttonPressed = e => { 
+        for (i = 0; i < boxes.length; i++){
+            boxes[i].addEventListener('mouseover', buttonHover); //Sets function to hover
+            boxes[i].addEventListener('mouseup', buttonUp); //Removes event listeners when mouse is released.
+        }
+    }
+
+    //Changes class of box.
+    const buttonHover = e => { 
         e.target.classList.add('boxes-selected');
     }
 
-    //Add the event listener to each box.
+    //Removes event listener for mouseover.
+    const buttonUp = e => { 
+        console.log("hi")
+        for (i = 0; i < boxes.length; i++){
+            boxes[i].removeEventListener('mouseover', buttonHover);
+        }
+    }
+
+    //Add event listeners to each box.
     for (i = 0; i < boxes.length; i++){
-         boxes[i].addEventListener('mouseover', buttonPressed);
+        boxes[i].addEventListener('mousedown', buttonPressed);
     }
 }
 
@@ -59,8 +75,9 @@ gridSizeInput.addEventListener('change', (event) => {
     addBoxesListener();
 });
 
+//Resets grid to last size.
 clearGridButton.addEventListener('click', (event) => {
     clearGrid();
     createGrid();
     addBoxesListener();
-} )
+});
