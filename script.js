@@ -3,9 +3,22 @@ const gridContainer = document.querySelector(".grid-container");
 const gridColumn = document.querySelector(".grid-column");
 const gridSizeInput = document.getElementById("grid-size");
 const clearGridButton = document.querySelector(".clear-grid");
+//const grayScaleButton = document.querySelector(".gray-scale");
+const rainbowButton = document.querySelector(".rainbow");
+const blackButton = document.querySelector(".black");
+const eraserButton = document.querySelector(".eraser");
 
 //Global Vairibles.
 let gridSize = gridSizeInput.value;
+const backgroundWhite = 'rgb(255,255,255)';
+const backgroundBlack = 'rgb(0,0,0)';
+let backgroundRainbow = `rgb(${randomColor()},${randomColor()},${randomColor()})`;
+//const backgroundWhite = rgb(255,255,255); 
+let colorSelected = backgroundBlack;
+
+function randomColor(){
+    return Math.floor((Math.random() * 256) + 1);
+}
 
 //Creates grid using the users grid size selection.
 function createGrid(){
@@ -39,6 +52,7 @@ function addBoxesListener(){
     //Sets event listners for when initially clicked.
     const buttonPressed = e => { 
         for (i = 0; i < boxes.length; i++){
+            e.target.setAttribute('style', `background-color: ${colorSelected}`);
             boxes[i].addEventListener('mouseover', buttonHover); //Sets function to hover
             boxes[i].addEventListener('mouseup', buttonUp); //Removes event listeners when mouse is released.
         }
@@ -46,12 +60,11 @@ function addBoxesListener(){
 
     //Changes class of box.
     const buttonHover = e => { 
-        e.target.classList.add('boxes-selected');
+        e.target.setAttribute('style', `background-color: ${colorSelected}`);
     }
 
     //Removes event listener for mouseover.
     const buttonUp = e => { 
-        console.log("hi")
         for (i = 0; i < boxes.length; i++){
             boxes[i].removeEventListener('mouseover', buttonHover);
         }
@@ -73,6 +86,7 @@ gridSizeInput.addEventListener('change', (event) => {
     clearGrid();
     createGrid();
     addBoxesListener();
+    colorSelected = backgroundBlack;
 });
 
 //Resets grid to last size.
@@ -80,4 +94,18 @@ clearGridButton.addEventListener('click', (event) => {
     clearGrid();
     createGrid();
     addBoxesListener();
+    colorSelected = backgroundBlack;
+});
+
+blackButton.addEventListener('click', (event) => {
+    colorSelected = backgroundBlack;  
+});
+
+eraserButton.addEventListener('click', (event) => {
+    colorSelected = backgroundWhite;  
+});
+
+rainbowButton.addEventListener('click', (event) => {
+    randomColor()
+    colorSelected = backgroundRainbow;  
 });
