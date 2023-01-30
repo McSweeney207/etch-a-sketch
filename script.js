@@ -8,6 +8,7 @@ const randomButton = document.querySelector(".random");
 const rainbowButton = document.querySelector(".rainbow");
 const blackButton = document.querySelector(".black");
 const eraserButton = document.querySelector(".eraser");
+const colorPicker = document.getElementById("color-picker");
 
 //Global Vairibles.
 let gridSize = gridSizeInput.value;
@@ -57,7 +58,7 @@ function addBoxesListener(){
     //Sets event listners for when initially clicked.
     const buttonPressed = e => { 
         for (i = 0; i < boxes.length; i++){
-            if (rainbow){
+            if (rainbow){ //Set a random color when each box is selected.
                 e.target.setAttribute('style', `background-color: rgb(${randomColor()},${randomColor()},${randomColor()}`);
             } else {
                 e.target.setAttribute('style', `background-color: ${colorSelected}`);
@@ -112,30 +113,40 @@ clearGridButton.addEventListener('click', (event) => {
 });
 
 //Color event listeners.
+
+//Sets color to black.
 blackButton.addEventListener('click', (event) => {
     colorSelected = backgroundBlack; 
     rainbow = false; 
     greyScale = false;
 });
 
+//Sets color to white
 eraserButton.addEventListener('click', (event) => {
     colorSelected = backgroundWhite;  
     rainbow = false;
     greyScale = false;
 });
 
+//Sets color to random.
 randomButton.addEventListener('click', (event) => {
     colorSelected = backgroundRandom();
     rainbow = false;  
     greyScale = false;
 });
 
+//Trigers Rainbow color in click and mouseover event listener.
 rainbowButton.addEventListener('click', (event) => {
     rainbow = true;
     greyScale = false;
 });
 
-greyScaleButton.addEventListener('click', (event) => {
+/*greyScaleButton.addEventListener('click', (event) => {
     greyScale = true;
     rainbow = false;  
+});*/
+
+//Gets the value of the the color picker.
+colorPicker.addEventListener('input', (event) => {
+    colorSelected = colorPicker.value;
 });
