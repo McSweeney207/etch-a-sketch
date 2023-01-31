@@ -3,7 +3,7 @@ const gridContainer = document.querySelector(".grid-container");
 const gridColumn = document.querySelector(".grid-column");
 const gridSizeInput = document.getElementById("grid-size");
 const clearGridButton = document.querySelector(".clear-grid");
-const greyScaleButton = document.querySelector(".grey-scale");
+//const greyScaleButton = document.querySelector(".grey-scale");
 const randomButton = document.querySelector(".random");
 const rainbowButton = document.querySelector(".rainbow");
 const blackButton = document.querySelector(".black");
@@ -18,7 +18,7 @@ let backgroundRandom = function (){
     };
 let colorSelected = backgroundBlack; //Defult color
 let rainbow = false;
-let greyScale = false;
+//let greyScale = false;
 
 //Selects random RGB value.
 function randomColor(){
@@ -115,27 +115,27 @@ clearGridButton.addEventListener('click', (event) => {
 blackButton.addEventListener('click', (event) => {
     colorSelected = backgroundBlack; 
     rainbow = false; 
-    greyScale = false;
+    //greyScale = false;
 });
 
 eraserButton.addEventListener('click', (event) => {
     colorSelected = backgroundWhite;  
     rainbow = false;
-    greyScale = false;
+    //greyScale = false;
 });
 
 randomButton.addEventListener('click', (event) => {
     colorSelected = backgroundRandom();
     rainbow = false;  
-    greyScale = false;
+    //greyScale = false;
 });
 
 rainbowButton.addEventListener('click', (event) => {
     rainbow = true;
-    greyScale = false;
+    //greyScale = false;
 });
 
-greyScaleButton.addEventListener('click', (event) => {
+/*greyScaleButton.addEventListener('click', (event) => {
     greyScale = true;
     rainbow = false;  
-});
+});*/
