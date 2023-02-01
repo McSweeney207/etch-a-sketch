@@ -11,29 +11,20 @@ const eraserButton = document.querySelector(".eraser");
 const colorPicker = document.getElementById("color-picker");
 
 //Global Vairibles.
-let gridSize = gridSizeInput.value;
+let gridSize = gridSizeInput.value; //Sets to 16 x 16 by defult.
 const backgroundWhite = 'rgb(255,255,255)';
 const backgroundBlack = 'rgb(0,0,0)';
+let colorSelected = backgroundBlack; //Default color.
+let rainbow = false;
+
 let backgroundRandom = function (){
     return `rgb(${randomColor()},${randomColor()},${randomColor()})`;
-    }; //Random Color
-let colorSelected = backgroundBlack; //Defult color
-let rainbow = false;
-//let greyScale = false;
-//let greyScaleIncrease = 250
-//let greyScaleColor = function(){`rgb(${greyScaleIncrease},${greyScaleIncrease},${greyScaleIncrease})`};
-//let mouseDownTest = 0
+    }; //Random Color.
 
 //Selects random RGB value.
 function randomColor(){
     return Math.floor((Math.random() * 256) + 1);
 };
-
-/*increases color by 10% from white and then reduces it again.
-function greyScaleIncreaseFunction(){
-    let negreyScaleIncrease = greyScaleIncrease --;
-    console.log(greyScaleIncrease);*
-}*/
 
 //Creates grid using the users grid size selection.
 function createGrid(){
@@ -61,32 +52,23 @@ function clearGrid(){
 
 //Selects all the boxes each time they are changed and adds event listeners.
 function addBoxesListener(){
-
     let boxes = document.querySelectorAll(".boxes"); //selects boxes.
 
-    //Sets event listners for when initially clicked.
+    //Sets event listeners for when initially clicked.
     const buttonPressed = e => { 
         for (i = 0; i < boxes.length; i++){
             if (rainbow){ //Set a random color when each box is selected.
                 e.target.setAttribute('style', `background-color: rgb(${randomColor()},${randomColor()},${randomColor()}`);
-            /*} else if (greyScale){ //Set a color to greyscale when each box is selected.
-                e.target.setAttribute('style', `background-color: rgb(${greyScaleIncrease},${greyScaleIncrease},${greyScaleIncrease}`);
-                greyScaleIncreaseFunction();
-                console.log(greyScaleIncrease)*/
-                //mouseDownTest ++
-                //console.log(mouseDownTest)
             } else {
                 e.target.setAttribute('style', `background-color: ${colorSelected}`);
-                //mouseDownTest ++
-                //console.log(mouseDownTest)
             };
 
-            boxes[i].addEventListener('mouseover', buttonHover); //Sets function to hover
-            boxes[i].addEventListener('mouseup', buttonUp); //Removes event listeners when mouse is released.
+            boxes[i].addEventListener('mouseover', buttonHover); //Changes class of box when mouse hovers over while mouse down.
+            boxes[i].addEventListener('mouseup', buttonUp); //Removes event listener for mouseover.
         };
     };
 
-    //Changes class of box.
+    //Changes class of box when mouse hovers over while mouse down.
     const buttonHover = e => { 
         if (rainbow){
             e.target.setAttribute('style', `background-color: rgb(${randomColor()},${randomColor()},${randomColor()}`);
@@ -95,7 +77,7 @@ function addBoxesListener(){
         };
     };
 
-    //Removes event listener for mouseover.
+    //Removes event listener for mouseover when mouseup.
     const buttonUp = e => { 
         for (i = 0; i < boxes.length; i++){
             boxes[i].removeEventListener('mouseover', buttonHover);
@@ -118,7 +100,6 @@ gridSizeInput.addEventListener('change', (event) => {
     clearGrid();
     createGrid();
     addBoxesListener();
-    colorSelected = backgroundBlack;
 });
 
 //Resets grid to last size.
@@ -130,44 +111,26 @@ clearGridButton.addEventListener('click', (event) => {
 });
 
 //Color event listeners.
-
-//Sets color to black.
 blackButton.addEventListener('click', (event) => {
-    colorSelected = backgroundBlack; 
-    rainbow = false; 
-    greyScale = false;
+    colorSelected = backgroundBlack; //Sets color to black.
+    rainbow = false;    
 });
 
-//Sets color to white.
 eraserButton.addEventListener('click', (event) => {
-    colorSelected = backgroundWhite;  
-    rainbow = false;
-    greyScale = false;
-});
-
-//Sets color to random.
-randomButton.addEventListener('click', (event) => {
-    colorSelected = backgroundRandom();
-    rainbow = false;  
-    greyScale = false;
-});
-
-//Trigers Rainbow color in click and mouseover event listener.
-rainbowButton.addEventListener('click', (event) => {
-    rainbow = true;
-    greyScale = false;
-});
-
-/*Trigers grey scale color in click and mouseover event listener.
-greyScaleButton.addEventListener('click', (event) => {
-    greyScale = true;
-    rainbow = false;  
-    //colorSelected = greyScaleColor;
-});*/
-
-//Gets the value of the the color picker.
-colorPicker.addEventListener('input', (event) => {
-    colorSelected = colorPicker.value;
+    colorSelected = backgroundWhite; //Sets color to white. 
     rainbow = false; 
-    greyScale = false;
+});
+
+randomButton.addEventListener('click', (event) => {
+    colorSelected = backgroundRandom(); //Sets color to random.
+    rainbow = false;  
+});
+
+rainbowButton.addEventListener('click', (event) => {
+    rainbow = true; //Trigers Rainbow color in click and mouseover event listener.
+});
+
+colorPicker.addEventListener('input', (event) => {
+    colorSelected = colorPicker.value; //Gets the value of the the color picker.
+    rainbow = false; 
 });
