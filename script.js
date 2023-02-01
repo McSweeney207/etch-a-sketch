@@ -3,7 +3,7 @@ const gridContainer = document.querySelector(".grid-container");
 const gridColumn = document.querySelector(".grid-column");
 const gridSizeInput = document.getElementById("grid-size");
 const clearGridButton = document.querySelector(".clear-grid");
-//const greyScaleButton = document.querySelector(".grey-scale");
+const greyScaleButton = document.querySelector(".grey-scale");
 const randomButton = document.querySelector(".random");
 const rainbowButton = document.querySelector(".rainbow");
 const blackButton = document.querySelector(".black");
@@ -16,15 +16,24 @@ const backgroundWhite = 'rgb(255,255,255)';
 const backgroundBlack = 'rgb(0,0,0)';
 let backgroundRandom = function (){
     return `rgb(${randomColor()},${randomColor()},${randomColor()})`;
-    };
+    }; //Random Color
 let colorSelected = backgroundBlack; //Defult color
 let rainbow = false;
 //let greyScale = false;
+//let greyScaleIncrease = 250
+//let greyScaleColor = function(){`rgb(${greyScaleIncrease},${greyScaleIncrease},${greyScaleIncrease})`};
+//let mouseDownTest = 0
 
 //Selects random RGB value.
 function randomColor(){
     return Math.floor((Math.random() * 256) + 1);
 };
+
+/*increases color by 10% from white and then reduces it again.
+function greyScaleIncreaseFunction(){
+    let negreyScaleIncrease = greyScaleIncrease --;
+    console.log(greyScaleIncrease);*
+}*/
 
 //Creates grid using the users grid size selection.
 function createGrid(){
@@ -60,8 +69,16 @@ function addBoxesListener(){
         for (i = 0; i < boxes.length; i++){
             if (rainbow){ //Set a random color when each box is selected.
                 e.target.setAttribute('style', `background-color: rgb(${randomColor()},${randomColor()},${randomColor()}`);
+            /*} else if (greyScale){ //Set a color to greyscale when each box is selected.
+                e.target.setAttribute('style', `background-color: rgb(${greyScaleIncrease},${greyScaleIncrease},${greyScaleIncrease}`);
+                greyScaleIncreaseFunction();
+                console.log(greyScaleIncrease)*/
+                //mouseDownTest ++
+                //console.log(mouseDownTest)
             } else {
                 e.target.setAttribute('style', `background-color: ${colorSelected}`);
+                //mouseDownTest ++
+                //console.log(mouseDownTest)
             };
 
             boxes[i].addEventListener('mouseover', buttonHover); //Sets function to hover
@@ -118,36 +135,39 @@ clearGridButton.addEventListener('click', (event) => {
 blackButton.addEventListener('click', (event) => {
     colorSelected = backgroundBlack; 
     rainbow = false; 
-    //greyScale = false;
+    greyScale = false;
 });
 
-//Sets color to white
+//Sets color to white.
 eraserButton.addEventListener('click', (event) => {
     colorSelected = backgroundWhite;  
     rainbow = false;
-    //greyScale = false;
+    greyScale = false;
 });
 
 //Sets color to random.
 randomButton.addEventListener('click', (event) => {
     colorSelected = backgroundRandom();
     rainbow = false;  
-    //greyScale = false;
+    greyScale = false;
 });
 
 //Trigers Rainbow color in click and mouseover event listener.
 rainbowButton.addEventListener('click', (event) => {
     rainbow = true;
-    //greyScale = false;
+    greyScale = false;
 });
 
-/*greyScaleButton.addEventListener('click', (event) => {
+/*Trigers grey scale color in click and mouseover event listener.
+greyScaleButton.addEventListener('click', (event) => {
     greyScale = true;
     rainbow = false;  
+    //colorSelected = greyScaleColor;
 });*/
 
 //Gets the value of the the color picker.
 colorPicker.addEventListener('input', (event) => {
     colorSelected = colorPicker.value;
     rainbow = false; 
+    greyScale = false;
 });
