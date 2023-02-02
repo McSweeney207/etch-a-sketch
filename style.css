@@ -10,7 +10,7 @@
 
 body {
     background: rgb(35, 37, 39);
-    background: linear-gradient(90deg, rgba(2,0,36,.5) 0%, rgba(97, 115, 216, 0.5) 35%, rgba(177, 74, 74, 0.5) 70%);
+    background: linear-gradient(90deg, rgba(13, 123, 248, 0.644) 0%, rgba(118, 113, 192, 0.938) 70%);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@ body {
 }
 
 .container-all {
-    background-color: rgba(173, 44, 44, 0.288);
+    background-color: rgba(255, 30, 30, 0.637);
     padding: 20px;
     margin: 20px;
     border: black 1px solid;
