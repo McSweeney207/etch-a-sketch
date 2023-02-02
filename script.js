@@ -113,24 +113,49 @@ clearGridButton.addEventListener('click', (event) => {
 //Color event listeners.
 blackButton.addEventListener('click', (event) => {
     colorSelected = backgroundBlack; //Sets color to black.
-    rainbow = false;    
+    rainbow = false;
+    blackButton.style.cssText = 'background-color: rgb(134, 134, 134)';
+    eraserButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    randomButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    rainbowButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    colorPicker.style.cssText = 'background-color: rgb(255, 255, 255)';
 });
 
 eraserButton.addEventListener('click', (event) => {
     colorSelected = backgroundWhite; //Sets color to white. 
-    rainbow = false; 
+    rainbow = false;
+    eraserButton.style.cssText = 'background-color: rgb(134, 134, 134)';
+    blackButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    randomButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    rainbowButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    colorPicker.style.cssText = 'background-color: rgb(255, 255, 255)'; 
 });
 
 randomButton.addEventListener('click', (event) => {
     colorSelected = backgroundRandom(); //Sets color to random.
-    rainbow = false;  
+    rainbow = false; 
+    randomButton.style.cssText = 'background-color: rgb(134, 134, 134)';
+    eraserButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    blackButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    rainbowButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    colorPicker.style.cssText = 'background-color: rgb(255, 255, 255)'; 
 });
 
 rainbowButton.addEventListener('click', (event) => {
     rainbow = true; //Trigers Rainbow color in click and mouseover event listener.
+    rainbowButton.style.cssText = 'background-color: rgb(134, 134, 134)';
+    eraserButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    randomButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    blackButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    colorPicker.style.cssText = 'background-color: rgb(255, 255, 255)';
 });
 
 colorPicker.addEventListener('input', (event) => {
     colorSelected = colorPicker.value; //Gets the value of the the color picker.
     rainbow = false; 
+    colorPicker.style.cssText = 'background-color: rgb(134, 134, 134)';
+    eraserButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    randomButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    rainbowButton.style.cssText = 'background-color: rgb(255, 255, 255)';
+    blackButton.style.cssText = 'background-color: rgb(255, 255, 255)';
 });

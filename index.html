@@ -10,35 +10,38 @@
 
 </head>
 <body>
+    <div class="container-all">
+        <h1>Etch-A-Sketch</h1>
+        <div class="container">
 
-    <h1>Etch-A-Sketch</h1>
+            <div class="buttons">
+                <div id="grid-size-selector">Grid Size: <br>
+                    <select name="Grid Size " id="grid-size">
+                        <option value="8">8</option>
+                        <option value="16" selected>16</option>
+                        <option value="32">32</option>
+                        <option value="64">64</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
 
-    <div>Grid Size: <select name="Grid Size" id="grid-size">
-        <option value="8">8</option>
-        <option value="16" selected>16</option>
-        <option value="32">32</option>
-        <option value="64">64</option>
-        <option value="100">100</option>
-      </select>
-    </div>
 
-    <br>
+                <button class="clear-grid">Clear Grid</button>
+                <input id="color-picker" type="color"></input>
+                <button class="random">Random</button> 
+                <button class="rainbow">Rainbow</button> 
+                <button class="black">Black</button>
+                <button class="eraser">Eraser</button>       
+            </div>
+        
+            <div class="grid-container">
+                <div class="grid-column">
+            </div>
 
-    <div class="buttons">
-        <button class="clear-grid">Clear Grid</button>
-        <input id="color-picker" type="color"></input>
-        <button class="random">Random</button> 
-        <button class="rainbow">Rainbow</button> 
-        <button class="black">Black</button>
-        <button class="eraser">Eraser</button>       
-    </div>
-
-    <br>
-
-    <div class="grid-container">
-        <div class="grid-column">
         </div>
     </div>
+    
+
 <script src="script.js"></script>    
 </body>
 </html>
